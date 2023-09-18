@@ -1,3 +1,6 @@
 .vscode/
 .CondaPkg/
 .ipynb_checkpoints/
+*.png
+*.mp4
+*.jld2

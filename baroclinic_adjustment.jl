@@ -30,7 +30,7 @@ model = HydrostaticFreeSurfaceModel(; grid,
                                     tracer_advection = WENO())
 
 
-###########-------- STARTING UP MODEL/ ICs ---------------#############
+###########-------- STARTING UP MODEL/ICs ---------------#############
 """
     ramp(y, Δy)
 Linear ramp from 0 to 1 between -Δy/2 and +Δy/2.
@@ -52,8 +52,6 @@ simulation = Simulation(model, Δt=20minutes, stop_time=20days)
 
 wizard = TimeStepWizard(cfl=0.2, max_change=1.1, max_Δt=20minutes)
 simulation.callbacks[:wizard] = Callback(wizard, IterationInterval(20))
-
-using Printf
 
 wall_clock = Ref(time_ns())
 
@@ -77,6 +75,7 @@ simulation.callbacks[:print_progress] = Callback(print_progress, IterationInterv
 ###########-------- DIAGNOSTICS --------------#############
 @info "Adding Diagnostics..."
 u, v, w = model.velocities
+b = model.tracers.b
 ζ = ∂x(v) - ∂y(u)
 B = Average(b, dims=1)
 U = Average(u, dims=1)
