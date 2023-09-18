@@ -1,0 +1,18 @@
+name: trace-seas
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python
+  - jupyter
+  - jupyterlab
+# - jupyterlab-variableinspector
+  - ipython
+  - ipympl
+  - nodejs
+  - netcdf4
+  - matplotlib
+  - numpy
+  - pandas
+  - xarray
+  - scipy
