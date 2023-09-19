@@ -19,7 +19,8 @@ M² = 1e-7 # [s⁻²] horizontal buoyancy gradient
 
 
 ###########-------- GRID SET UP ----------------#############
-grid = RectilinearGrid(size = (50, 50, 10),
+grid = RectilinearGrid(GPU(),
+                       size = (50, 50, 10),
                        x = (0, Lx),
                        y = (-Ly/2, Ly/2),
                        z = (-Lz, 0),

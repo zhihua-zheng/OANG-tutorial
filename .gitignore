@@ -4,3 +4,5 @@
 *.png
 *.mp4
 *.jld2
+*.nc
+*.log
