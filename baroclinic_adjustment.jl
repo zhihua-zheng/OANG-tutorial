@@ -1,3 +1,6 @@
+### Setup julia enviroment
+using Pkg; Pkg.instantiate()
+
 using Oceananigans
 using Oceananigans.Units
 using Printf

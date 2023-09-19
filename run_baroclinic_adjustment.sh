@@ -13,7 +13,7 @@
 #PBS -o baroclinic_adjustment.log
 ### error
 #PBS -j oe
-### Email 
+### Email
 #PBS -M zhihua@umd.edu
 ### Send email on abort, begin and end
 #PBS -m abe
@@ -29,9 +29,8 @@ module load julia
 export TMPDIR=/glade/scratch/$USER/temp
 mkdir -p $TMPDIR
 
-### Setup julia enviroment
-
 ### file to run
 #/glade/scratch/knudsenl/BottomBoundaryLayer/
-proj_dir=$HOME/Projects/OANG-tutorial/
-julia --project=$proj_dir baroclinic_adjustment.jl
+#proj_dir=$HOME/Projects/OANG-tutorial/
+#--project=. activates julia environment
+julia --project=. baroclinic_adjustment.jl
