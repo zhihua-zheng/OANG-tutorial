@@ -1,4 +1,4 @@
-### Setup julia enviroment
+### Setup dependencies
 using Pkg; Pkg.instantiate()
 
 using Oceananigans

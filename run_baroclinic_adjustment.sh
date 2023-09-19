@@ -30,7 +30,6 @@ export TMPDIR=/glade/scratch/$USER/temp
 mkdir -p $TMPDIR
 
 ### file to run
-#/glade/scratch/knudsenl/BottomBoundaryLayer/
-#proj_dir=$HOME/Projects/OANG-tutorial/
-#--project=. activates julia environment
-julia --project=. baroclinic_adjustment.jl
+proj_dir=$HOME/Projects/OANG-tutorial
+#--project=<...> Activate julia environment
+julia --project=$proj_dir baroclinic_adjustment.jl
