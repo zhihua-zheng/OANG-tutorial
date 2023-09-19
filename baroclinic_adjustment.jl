@@ -110,6 +110,7 @@ simulation.output_writers[:zonal] = JLD2OutputWriter(model, (; b=B, u=U, v=V);
 
 
 ###########-------- RUN! --------------#############
+run(`nvidia-smi`) # check how much memory you're using on a GPU run
 @info "Run...."
 run!(simulation)
 @info "Simulation completed in " * prettytime(simulation.run_wall_time)
