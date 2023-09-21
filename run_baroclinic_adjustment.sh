@@ -4,7 +4,7 @@
 ### Project Code Allocation
 #PBS -A UMCP0020
 ### Resources
-#PBS -l select=1:ncpus=1:ngpus=1:mem=2GB
+#PBS -l select=1:ncpus=1:ngpus=1:mem=4GB
 ### Run Time
 #PBS -l walltime=01:00:00
 ### Type of GPU
@@ -33,5 +33,5 @@ mkdir -p $TMPDIR
 
 ### file to run
 proj_dir=$HOME/Projects/OANG-tutorial
-#--project=<...> Activate julia environment
+#--project=<...> activates julia environment
 julia --project=$proj_dir baroclinic_adjustment.jl
