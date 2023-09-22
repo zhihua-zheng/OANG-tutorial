@@ -98,14 +98,14 @@ slicers = (east = (grid.Nx, :, :),
 for side in keys(slicers)
     indices = slicers[side]
 
-    simulation.output_writers[side] = NetCDFOutputWriter(model, fields_slice,
+    simulation.output_writers[side] = NetCDFOutputWriter(model, fields_slice;
                                                        filename = filename * "_$(side)_slice.nc",
                                                        schedule = TimeInterval(save_fields_interval),
                                                        overwrite_existing = true,
                                                        indices)
 end
 
-simulation.output_writers[:zonal] = NetCDFOutputWriter(model, fields_zonnal_mean,
+simulation.output_writers[:zonal] = NetCDFOutputWriter(model, fields_zonnal_mean;
                                                      filename = filename * "_zonal_mean.nc",
                                                      schedule = TimeInterval(save_fields_interval),
                                                      overwrite_existing = true)
