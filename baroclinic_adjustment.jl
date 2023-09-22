@@ -84,6 +84,8 @@ b = model.tracers.b
 B = Average(b, dims=1)
 U = Average(u, dims=1)
 V = Average(v, dims=1)
+fields_slice = Dict("u" => u, "v" => v, "w" => w, "b" => b, "ζ" => ζ)
+fields_zonnal_mean = Dict("B" => B, "U" => U, "V" => V)
 
 filename = "baroclinic_adjustment"
 save_fields_interval = 0.5day
@@ -96,15 +98,15 @@ slicers = (east = (grid.Nx, :, :),
 for side in keys(slicers)
     indices = slicers[side]
 
-    simulation.output_writers[side] = JLD2OutputWriter(model, (; b, ζ);
-                                                       filename = filename * "_$(side)_slice",
+    simulation.output_writers[side] = NetCDFOutputWriter(model, fields_slice,
+                                                       filename = filename * "_$(side)_slice.nc",
                                                        schedule = TimeInterval(save_fields_interval),
                                                        overwrite_existing = true,
                                                        indices)
 end
 
-simulation.output_writers[:zonal] = JLD2OutputWriter(model, (; b=B, u=U, v=V);
-                                                     filename = filename * "_zonal_average",
+simulation.output_writers[:zonal] = NetCDFOutputWriter(model, fields_zonnal_mean,
+                                                     filename = filename * "_zonal_mean.nc",
                                                      schedule = TimeInterval(save_fields_interval),
                                                      overwrite_existing = true)
 
